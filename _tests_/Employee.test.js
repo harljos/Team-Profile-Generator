@@ -1,4 +1,4 @@
-const Profile = require("../index");
+const Profile = require("../src/employee");
 
 describe("Employee", () => {
     describe("Initialization", () => {
