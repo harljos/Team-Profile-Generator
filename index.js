@@ -1,34 +1,8 @@
 // required neccessary packages
 const inquirer = require("inquirer");
-const Engineer = require("./lib/engineer");
-const Intern = require("./lib/intern");
-const Manager = require("./lib/manager");
+const manager = require("./src/return-manager");
 
 const employees = [];
-
-// questions that will ask user for input for manager attributes
-const managerQuestions = [
-    {
-        type: "input",
-        message: "What is the manager's name?",
-        name: "managerName"
-    },
-    {
-        type: "input",
-        message: "What is the manager's id?",
-        name: "managerId"
-    },
-    {
-        type: "input",
-        message: "What is the manager's email?",
-        name: "managerEmail"
-    },
-    {
-        type: "input",
-        message: "What is the manager's office number",
-        name: "officeNumber"
-    }
-];
 
 const employeeQuestion = [
     {
@@ -55,9 +29,10 @@ const employeePromt = () => {
 // runs when file is initialized
 const init = () => {
     inquirer
-        .prompt(managerQuestions)
+        .prompt(manager.managerQuestions)
         .then((data) => {
-            console.log(data);
+            employees.push(manager.returnManager(data));
+            // console.log(employees);
         })
         .then(() => {
             employeePromt();
