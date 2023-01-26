@@ -1,5 +1,8 @@
 class Employee {
     constructor(name, id, email) {
+        if (name === null || id === null || email === null) {
+            throw new Error("Expected name, id, and email to have a value");
+        }
         this.name = name;
         this.id = id;
         this.email = email;
