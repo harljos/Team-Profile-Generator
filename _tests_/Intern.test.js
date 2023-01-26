@@ -1,4 +1,4 @@
-const Intern = require("../src/intern");
+const Intern = require("../lib/intern");
 
 describe("Intern", () => {
     describe("Initialization", () => {
