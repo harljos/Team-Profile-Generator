@@ -5,9 +5,9 @@ describe("Engineer", () => {
         it("should create an object with name, id, email, and github", () => {
             const employee = new Engineer({name: "Joe", id: "1", email: "j@gmail.com", github: "harljos"});
 
-            expect(employee.getName()).toEqual({name: "Joe", id: "1", email: "j@gmail.com", github: "harljos"});
+            expect(employee).toEqual({name: "Joe", id: "1", email: "j@gmail.com", github: "harljos"});
         });
-        it("should throw an error if no argument are given", () => {
+        it("should throw an error if no arguments are given", () => {
             const cb = () => new Engineer();
 
             expect(cb).toThrow();
