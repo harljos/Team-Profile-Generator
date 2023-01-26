@@ -1,6 +1,7 @@
 // required neccessary packages
 const inquirer = require("inquirer");
 const manager = require("./src/return-manager");
+const engineer = require("./src/return-engineer");
 
 const employees = [];
 
@@ -17,7 +18,14 @@ const employeeQuestion = [
 const employeePromt = () => {
     inquirer.prompt(employeeQuestion)
             .then((data) => {
-                if (data.employee === "engineer" || data.employee === "intern") {
+                if (data.employee === "engineer") {
+                    inquirer.prompt(engineer.engineerQuestions).then((data) => {
+                       employees.push(engineer.returnEngineer(data));
+                       console.log(employees);
+                    })
+                    .then(() => employeePromt())
+                }
+                else if (data.employee === "intern") {
                     employeePromt();
                 }
                 else {
