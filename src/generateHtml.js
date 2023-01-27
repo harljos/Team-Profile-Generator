@@ -8,17 +8,29 @@ const renderHtml = () => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Speed Reader</title>
+        <title>Team Profile</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="./style.css" />
-        <title>Team Profile Generator</title>
       </head>
       <body>
-        <header>
-            <h2 class="align-items-center">My Team</h2>
+        <header class="d-flex justify-content-center align-items-center">
+            <h2>My Team</h2>
         </header>
         <main class="container">
         </main>
-        <script src="../src/generateHtml.js"></script>
-      </body>`
+      </body>
+    </html>`
+}
+
+// writes the html file
+const writeHtml = () => {
+    fs.writeFile("./dist/team.html", renderHtml(), (err) => {
+        if (err) {
+            console.log(err);
+        }
+    })
+}
+
+module.exports = {
+    writeHtml
 }

@@ -3,6 +3,7 @@ const inquirer = require("inquirer");
 const manager = require("./src/return-manager");
 const engineer = require("./src/return-engineer");
 const intern = require("./src/return-intern");
+const html = require("./src/generateHtml");
 
 const employees = [];
 
@@ -34,7 +35,7 @@ const employeePromt = () => {
                      .then(() => employeePromt())
                 }
                 else {
-                    console.log("Success");
+                    html.writeHtml();
                 }
             })
 }
