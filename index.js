@@ -34,7 +34,7 @@ const employeePromt = () => {
                      .then(() => employeePromt())
                 }
                 else {
-                    console.log(data);
+                    console.log("Success");
                 }
             })
 }
@@ -45,11 +45,10 @@ const init = () => {
         .prompt(manager.managerQuestions)
         .then((data) => {
             employees.push(manager.returnManager(data));
-            // console.log(employees);
         })
         .then(() => {
             employeePromt();
-        })    
+        })
 }
 
 init();
