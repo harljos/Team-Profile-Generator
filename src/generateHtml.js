@@ -1,7 +1,15 @@
 const fs = require("fs");
+const Employee = require("../lib/employee");
+
+// renders the whole html file
+const renderHtml = (employees) => {
+  writeHtml();
+  renderCards(employees);
+}
+
 
 // renders the starter html code
-const renderHtml = () => {
+const renderStartHtml = () => {
     return `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -17,20 +25,94 @@ const renderHtml = () => {
             <h2>My Team</h2>
         </header>
         <main class="container">
-        </main>
-      </body>
-    </html>`
+        `
+}
+
+// renders cards to html
+const renderCards = (employees) => {
+  employees.forEach(employee => {
+    appendHtml(generateCard(employee));
+  });
+  appendHtml(renderEndHtml());
+}
+
+// appends the end of html
+const renderEndHtml = () => {
+  return `  </main>
+    </body>
+  </html>`
+}
+
+// generates a card based off role
+const generateCard = (employee) => {
+  switch (employee.getRole()) {
+    case "Engineer":
+      return `
+          <div class="card" style="width:18rem">
+            <div class="card-header bg-primary">
+              <h1>${employee.getName()}</h1>
+              <h1>${employee.getRole()}</h1>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${employee.getId()}</li>
+                <li class="list-group-item"><a href="mailto:${employee.getEmail()}">Email: ${employee.getEmail()}</a></li>
+                <li class="list-group-item">Github: ${employee.getGithub()}</li>
+              </ul>
+            </div>
+          </div>
+      `
+    case "Intern":
+      return `
+          <div class="card" style="width:18rem">
+            <div class="card-header bg-primary">
+              <h1>${employee.getName()}</h1>
+              <h1>${employee.getRole()}</h1>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${employee.getId()}</li>
+                <li class="list-group-item"><a href="mailto:${employee.getEmail()}">Email: ${employee.getEmail()}</a></li>
+                <li class="list-group-item">School: ${employee.getSchool()}</li>
+              </ul>
+            </div>
+          </div>
+      ` 
+    case "Manager":
+      return `
+          <div class="card" style="width:18rem">
+            <div class="card-header bg-primary">
+              <h1>${employee.getName()}</h1>
+              <h1>${employee.getRole()}</h1>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${employee.getId()}</li>
+                <li class="list-group-item"><a href="mailto:${employee.getEmail()}">Email: ${employee.getEmail()}</a></li>
+                <li class="list-group-item">Github: ${employee.getOfficeNumber()}</li>
+              </ul>
+            </div>
+          </div>
+      `
+  }
 }
 
 // writes the html file
 const writeHtml = () => {
-    fs.writeFile("./dist/team.html", renderHtml(), (err) => {
-        if (err) {
-            console.log(err);
-        }
+    fs.writeFile("./dist/team.html", renderStartHtml(), (err) => {
+      if (err) {
+          console.log(err);
+      }
     })
 }
 
-module.exports = {
-    writeHtml
-}
+// writes cards to html
+const appendHtml = (data) => {
+  fs.appendFile("./dist/team.html", data, (err) => {
+    if (err) {
+      console.log(err);
+  }
+  })
+} 
+
+module.exports = {renderHtml}

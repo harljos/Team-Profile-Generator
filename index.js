@@ -4,6 +4,7 @@ const manager = require("./src/return-manager");
 const engineer = require("./src/return-engineer");
 const intern = require("./src/return-intern");
 const html = require("./src/generateHtml");
+// const card = require("./src/generateCards");
 
 const employees = [];
 
@@ -23,19 +24,19 @@ const employeePromt = () => {
                 if (data.employee === "engineer") {
                     inquirer.prompt(engineer.engineerQuestions).then((data) => {
                        employees.push(engineer.returnEngineer(data));
-                       console.log(employees);
+                    //    console.log(employees);
                     })
                     .then(() => employeePromt())
                 }
                 else if (data.employee === "intern") {
                     inquirer.prompt(intern.internQuestions).then((data) => {
                         employees.push(intern.returnIntern(data));
-                        console.log(employees);
+                        // console.log(employees);
                      })
                      .then(() => employeePromt())
                 }
                 else {
-                    html.writeHtml();
+                    html.renderHtml(employees);
                 }
             })
 }

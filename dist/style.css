@@ -1,5 +1,20 @@
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 header {
     background-color: #fc034e;
     height: 125px;
+    color: white;
+}
+
+.card {
+    margin-top: 5vh;
+}
+
+h1 {
     color: white;
 }
