@@ -1,5 +1,4 @@
 const fs = require("fs");
-const Employee = require("../lib/employee");
 
 // renders the whole html file
 const renderHtml = (employees) => {
@@ -30,15 +29,23 @@ const renderStartHtml = () => {
 
 // renders cards to html
 const renderCards = (employees) => {
-  employees.forEach(employee => {
-    appendHtml(generateCard(employee));
-  });
-  appendHtml(renderEndHtml());
+  for (let i = 0; i < employees.length; i++) {
+    appendHtml(generateCard(employees[i]));
+    if (i === employees.length - 1) {
+      renderEndHtml();
+    }
+  }
+}
+
+// render end of html
+const renderEndHtml = () => {
+  appendHtml(makeEndHtml());
 }
 
 // appends the end of html
-const renderEndHtml = () => {
-  return `  </main>
+const makeEndHtml = () => {
+  return `
+      </main>
     </body>
   </html>`
 }
@@ -89,7 +96,7 @@ const generateCard = (employee) => {
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${employee.getId()}</li>
                 <li class="list-group-item"><a href="mailto:${employee.getEmail()}">Email: ${employee.getEmail()}</a></li>
-                <li class="list-group-item">Github: ${employee.getOfficeNumber()}</li>
+                <li class="list-group-item">Office Number: ${employee.getOfficeNumber()}</li>
               </ul>
             </div>
           </div>
