@@ -13,6 +13,10 @@ npm i
 
 To build your team open the terminal and run node index.js. Input your response for the questions about the manager, and then choose between adding an engineer, intern, or I am done building the team. Once you have selected I am done building the team a html file will generate with cards of the employees you have hired.
 
+Demo Video:
+
+https://drive.google.com/file/d/15ZDOaymLQzjc9v3OUWJ5O0gIS1E8MmSo/view?usp=sharing
+
 ## Credits
 
 N/A
